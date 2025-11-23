@@ -162,14 +162,4 @@ Potential improvements for a production version:
 - This shouldn't happen due to threading, but if it does, restart the application
 - Check console for error messages
 
-## License
 
-This is a demonstration project for educational purposes.
-
-## Support
-
-For issues or questions, please refer to the project documentation or submit an issue through the project repository.
-
----
-
-**Note**: This application is for demonstration and educational purposes only. It does not provide actual emergency services or real-time safety monitoring. In case of real emergencies, always contact your local emergency services directly.
