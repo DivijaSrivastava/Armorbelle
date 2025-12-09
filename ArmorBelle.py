@@ -37,10 +37,6 @@ print(f"Location: {city}, {region}, {country}")
 # --- Main Application Class ---
 
 class SafetyDashboardApp:
-    """
-    A complete Tkinter application simulating a safety and status dashboard.
-    Uses threading for simulated background operations without freezing the GUI.
-    """
     def __init__(self, root):
         self.root = root
         self.root.title("ArmorBelle Safety Dashboard")
@@ -56,9 +52,7 @@ class SafetyDashboardApp:
         self._setup_ui()
 
     def _setup_ui(self):
-        """Sets up the main layout and widgets."""
-
-        # 1. Main Content Frame (Centered)
+      # 1. Main Content Frame (Centered)
         main_frame = tk.Frame(self.root, bg="#FFFFFF", padx=20, pady=20, bd=1, relief=tk.RAISED)
         main_frame.pack(padx=20, pady=20, fill="both", expand=True)
 
@@ -110,7 +104,6 @@ class SafetyDashboardApp:
 
 
     def _create_status_panel(self, parent):
-        """Creates the SOS status display panel."""
         panel = tk.LabelFrame(
             parent,
             text="🚨 System Status",
@@ -145,7 +138,6 @@ class SafetyDashboardApp:
         return panel
 
     def _create_data_panel(self, parent):
-        """Creates the location and auxiliary data display panel."""
         panel = tk.LabelFrame(
             parent,
             text="📍 Your location",
@@ -191,7 +183,6 @@ class SafetyDashboardApp:
         self.country_label.config(text=f"{country} ({region})")
 
     def _start_sos_sequence(self):
-        """Handles the SOS button press and starts the threaded sequence."""
         if self.is_sos_active:
             # If active, the button acts as a CANCEL/RESET button
             self._reset_sos()
@@ -212,11 +203,6 @@ class SafetyDashboardApp:
             messagebox.showwarning("SOS Initiated", "The SOS sequence has been started. Sending alert in 5 seconds.")
 
     def _sos_sequence_logic(self):
-        """
-        The heavy-lifting logic that runs in a separate thread.
-        NOTE: Tkinter widgets cannot be directly modified from this thread.
-        Use self.root.after() to schedule UI updates on the main thread.
-        """
         try:
             # Step 1: Simulated Wait (e.g., waiting for GPS fix, contacting server)
             time.sleep(5)
@@ -254,23 +240,18 @@ class SafetyDashboardApp:
             self.root.after(0, self._reset_sos)
             
     def _update_sos_state(self, new_state):
-        """Updates the internal state and calls the UI update function."""
         self.current_sos_state = new_state
         self._update_ui()
         
     def _show_success(self, title, message):
-        """Handles success message and logs."""
         messagebox.showinfo(title, message)
         self.log_label.config(text=f"SUCCESS: {message}")
 
     def _show_failure(self, title, message):
-        """Handles failure message and logs."""
         messagebox.showerror(title, message)
         self.log_label.config(text=f"FAILURE: {message}")
 
     def _reset_sos(self):
-        """Resets the application to the default 'SAFE' state."""
-        self.is_sos_active = False
         self.current_sos_state = 'SAFE'
         self.sos_button.config(text="Help just a click away", bg="#AF416D")
         self.log_label.config(text="System reset and awaiting command.")
@@ -278,10 +259,6 @@ class SafetyDashboardApp:
 
 
     def _update_ui(self):
-        """
-        Refreshes all GUI elements based on the current application state.
-        This must always be called on the main thread (i.e., not inside _sos_sequence_logic).
-        """
         state_config = SOS_STATES[self.current_sos_state]
         color = state_config['color']
         text = state_config['text']
@@ -313,4 +290,5 @@ class SafetyDashboardApp:
 if __name__ == '__main__':
     root = tk.Tk()
     app = SafetyDashboardApp(root)
+
     root.mainloop()
