@@ -174,7 +174,6 @@ class SafetyDashboardApp:
         return panel
 
     def _update_location_data(self):
-        """Updates the Geo & Device Info panel with initial location data."""
         # Accessing global variables defined outside the class
         global ip_address, city, region, country 
         
@@ -292,3 +291,4 @@ if __name__ == '__main__':
     app = SafetyDashboardApp(root)
 
     root.mainloop()
+
