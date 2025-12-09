@@ -2,12 +2,12 @@
 
 ## Project Information
 **Project Name:** ArmorBelle - Your E-Armor  
-**Developer:** [Your Name]  
+**Developer:**Divija Srivastava
 **Language:** Python 3.6+  
 **Framework:** Tkinter (GUI)  
 **Type:** Safety & Emergency Response Application  
 **Category:** Personal Safety Dashboard  
-**Completion Date:** [Date]
+**Completion Date:** 9-12
 
 ---
 
